@@ -15,8 +15,8 @@ function App(){
         const newUser = await userData.json();
 
         if(newUser.name){
-            const{avatar_url, name, bio} = newUser;
-            setCurrentUser({avatar_url,name,bio});
+            const{avatar_url, name, bio, login} = newUser;
+            setCurrentUser({avatar_url,name,bio, login});
 
             const reposData = await fetch(`https://api.github.com/users/${user}/repos`)
             const newRepos = await reposData.json();
@@ -42,11 +42,11 @@ function App(){
                         {currentUser?.name ? (
                        <>
                               <div className='perfil'>
-                              <img src="https://avatars.githubusercontent.com/u/146978584?v=4" className="profile" alt="imagem de perfil no github" />
+                              <img src={currentUser.avatar_url} className="profile" alt="imagem de perfil no github" />
                              <div>
-                             <h3>Pablo Henrique</h3>
-                             <span>@Dev. Pablo H.</span>
-                             <p>Descrição GitHub</p>
+                             <h3>{currentUser.name}</h3>
+                             <span>@{currentUser.login}</span>
+                             <p>{currentUser.bio}</p>
                              </div>
                           </div>
                          <hr /> 
