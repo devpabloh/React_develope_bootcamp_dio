@@ -1,4 +1,5 @@
 import {Header} from '../../components/Header'
+import ItemList from '../../components/ItemList'
 import background from "../../assets/image-background.svg"
 import './styles.css'
 
@@ -23,6 +24,10 @@ function App(){
                            </div>
                         </div>
                        <hr />
+                       <div>
+                        <h4>Repositórios</h4>
+                        <ItemList title="teste" description="teste de criação"/>
+                       </div>
                     </div>
             </div>
             
