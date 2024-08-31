@@ -14,7 +14,18 @@ function App(){
         const userData = await fetch(`https://api.github.com/users/${user}`)
         const newUser = await userData.json();
 
-        console.log(newUser)
+        if(newUser.name){
+            const{avatar_url, name, bio} = newUser;
+            setCurrentUser({avatar_url,name,bio});
+
+            const reposData = await fetch(`https://api.github.com/users/${user}/repos`)
+            const newRepos = await reposData.json();
+
+            if(newRepos.length){
+                setRepos(newRepos);
+
+            }
+        }
     }
 
 
@@ -28,19 +39,30 @@ function App(){
                             <input name='usuario' value={user} onChange={event => setUser(event.target.value)} placeholder='@username' />
                             <button onClick={handleGetData}>Buscar</button>
                         </div>
-                        <div className='perfil'>
-                            <img src="https://avatars.githubusercontent.com/u/146978584?v=4" className="profile" alt="imagem de perfil no github" />
-                           <div>
-                           <h3>Pablo Henrique</h3>
-                           <span>@Dev. Pablo H.</span>
-                           <p>Descrição GitHub</p>
-                           </div>
-                        </div>
-                       <hr />
-                       <div>
+                        {currentUser?.name ? (
+                       <>
+                              <div className='perfil'>
+                              <img src="https://avatars.githubusercontent.com/u/146978584?v=4" className="profile" alt="imagem de perfil no github" />
+                             <div>
+                             <h3>Pablo Henrique</h3>
+                             <span>@Dev. Pablo H.</span>
+                             <p>Descrição GitHub</p>
+                             </div>
+                          </div>
+                         <hr /> 
+                       </>
+                        ) : null}
+                      {repos?.length ? (
+                        <>
+                        <div>
                         <h4 className='repositorio'>Repositórios</h4>
                         <ItemList title="teste" description="teste de criação"/>
+                        <ItemList title="teste" description="teste de criação"/>
+                        <ItemList title="teste" description="teste de criação"/>
                        </div>
+                        </>
+                      ): null}
+                       
                     </div>
             </div>
             
