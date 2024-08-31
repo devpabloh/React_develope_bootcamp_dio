@@ -56,9 +56,9 @@ function App(){
                         <>
                         <div>
                         <h4 className='repositorio'>Repositórios</h4>
-                        <ItemList title="teste" description="teste de criação"/>
-                        <ItemList title="teste" description="teste de criação"/>
-                        <ItemList title="teste" description="teste de criação"/>
+                        {repos.map(repo =>(
+                            <ItemList title={repo.name} description={repo.description}/>
+                        ))}
                        </div>
                         </>
                       ): null}

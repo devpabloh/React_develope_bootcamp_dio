@@ -20,6 +20,7 @@
 
 input{
     border-radius: 1px solid #999999;
+    color: #FFFFFF;
     border-radius: 22px;
     min-width: 250px;
     width: 85%;
@@ -78,5 +79,5 @@ button{
     color: #FFFFFF;
     margin: 12px 0;
     text-align: center;
-    
+
 }
