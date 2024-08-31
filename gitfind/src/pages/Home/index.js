@@ -25,7 +25,7 @@ function App(){
                         </div>
                        <hr />
                        <div>
-                        <h4>Repositórios</h4>
+                        <h4 className='repositorio'>Repositórios</h4>
                         <ItemList title="teste" description="teste de criação"/>
                        </div>
                     </div>
